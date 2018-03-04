@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://www.example.org/HelloWorld/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="HelloWorld"
+	targetNamespace="http://www.example.org/HelloWorld/">
+	<wsdl:types>
+		<wsdl:documentation>
+			Types section defines the input/output types of a Web Service method.
+			If your web service method takes any Objects as input or
+			returns any Object as output, those relevant complex type representations
+			are declared under
+			<types>
+				section of the WSDL
+				document.Either the complex types are declared directly or a Schema document is
+				imported in the
+				<types> section as shown below.
+		</wsdl:documentation>
+		<xsd:schema targetNamespace="http://www.example.org/HelloWorld/">
+			<xsd:element name="NewOperation">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="in" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="NewOperationResponse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="out" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="NewOperationRequest">
+		<wsdl:part element="tns:NewOperation" name="parameters" />
+	</wsdl:message>
+	<wsdl:documentation>
+		<message>
+			The next element after
+			<types>
+				is
+				<message>
+					.
+					<message> represents the input and output of a Web Service method.
+	</wsdl:documentation>
+	<wsdl:message name="NewOperationResponse">
+		<wsdl:part element="tns:NewOperationResponse" name="parameters" />
+	</wsdl:message>
+	<wsdl:portType name="HelloWorld">
+		<wsdl:documentation>
+			PortType describes about the Service operations and their input/output types.
+		</wsdl:documentation>
+		<wsdl:operation name="NewOperation">
+			<wsdl:input message="tns:NewOperationRequest" />
+			<wsdl:output message="tns:NewOperationResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="HelloWorldSOAP" type="tns:HelloWorld">
+		<wsdl:documentation>
+			Binding provides implementation of the PortType where in it describes how is
+			the data being transported between
+			Consumer and Provider. Which protocol is being used for transmission and what
+			is the binding protocol.
+		</wsdl:documentation>
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="NewOperation">
+			<soap:operation soapAction="http://www.example.org/HelloWorld/NewOperation" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="HelloWorld">
+		<wsdl:documentation>
+			Specifies the port address(es) of the binding. The service is a collection of
+			network endpoints or ports.
+		</wsdl:documentation>
+		<wsdl:port binding="tns:HelloWorldSOAP" name="HelloWorldSOAP">
+			<soap:address location="http://www.example.org/" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
