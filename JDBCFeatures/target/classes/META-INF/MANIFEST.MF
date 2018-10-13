@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
-Built-By: DELL
-Class-Path: lib/ojdbc14-10.2.0.4.0.jar lib/log4j-core-2.5.jar lib/log4
- j-api-2.5.jar lib/log4j-slf4j-impl-2.5.jar lib/slf4j-api-1.7.12.jar
+Built-By: gopisma
+Class-Path: lib/log4j-core-2.5.jar lib/log4j-api-2.5.jar lib/log4j-slf
+ 4j-impl-2.5.jar lib/slf4j-api-1.7.12.jar
 Build-Jdk: 1.8.0_121
 Created-By: Maven Integration for Eclipse
 Main-Class: com.app.InsertTest

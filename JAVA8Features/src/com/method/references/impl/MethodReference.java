@@ -16,8 +16,8 @@ public class MethodReference {
 		System.out.println("Number :"+Sayable.num);
 	}
 	public static void main(String[] args) {
-		Sayable sayable = MethodReference::saySomething;
-		sayable.say();
+		Sayable sayable = MethodReference::saySomething; // Referring static method  
+		sayable.say(); // Calling interface method 
 		
 		Sayable sayable2 = ()->{
 			System.out.println("Using Lambda Expression");
